@@ -5,4 +5,7 @@
     the link to Momment.js
 
 4/17/21
---
+-- not much progress
+
+4/19/21
+--attempting to get local storage to work 

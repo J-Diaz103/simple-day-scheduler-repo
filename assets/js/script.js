@@ -46,8 +46,15 @@ var timeOfDay = [
 ];
 var tIndex =0;
 var hIndex =0;
+
+var currentHour = moment();
 function nextHour(){
-    var timeMarker = $("#time-slot");
+    var timeMarker = $("time-slot");
+// each hour its own moment 
+//if moment is present red
+//if moment past gray
+//if !moment is green
+// if moment has info display
 
 for(var i=0;i<timeOfDay.length;i++){
     // console.log(timeOfDay[tIndex].hour + timeOfDay[hIndex].amPM);
@@ -55,16 +62,25 @@ for(var i=0;i<timeOfDay.length;i++){
     hIndex++;
 }
 }
+console.log(todayDate());
 
-var taskEl = $("#task-info").value;
-var saveTaskBtn = $("#saveButton").value;
+// var taskEl = $("#task-info").value;
+// var saveTaskBtn = $("#saveButton").value;
 
-var taskInfo = localStorage.getItem("taskInfo");
+// var taskInfo = localStorage.getItem("taskInfo");
 
-saveTaskBtn.addEventListener("click", function(event){
-    event.preventDefault();
-    taskEl.textContent = taskInfo;
-    localStorage.setItem("taskInfo",taskInfo);
+// saveTaskBtn.addEventListener("click", function(event){
+//     event.preventDefault();
+//     taskEl.textContent = taskInfo;
+//     localStorage.setItem("taskInfo",taskInfo);
+// })
+
+$(document).ready(function () {
+    $(".saveBtn").on("click", function () {
+        // Get nearby values of the users plan 
+        var text = $(this).siblings(".textarea").val();
+        var time = $(this).parent().attr("id");
+        // Save text in local storage
+localStorage.setItem(time, text);
+    })
 })
-
-
